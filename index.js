@@ -2,10 +2,19 @@ import express from 'express'
 import { MongoClient } from 'mongodb'
 import 'dotenv/config'
 import { randomUUID } from 'node:crypto'
+import { fileURLToPath } from 'node:url'
 
 const app = express()
 
 app.use(express.static('public'))
+
+const homepagePath = fileURLToPath(
+	new URL('./public/index.html', import.meta.url),
+)
+
+app.get('/', (req, res) => {
+	res.sendFile(homepagePath)
+})
 
 const PORT = Number(process.env.PORT) || 3000
 const LOGIN = process.env.MOODLE_LOGIN

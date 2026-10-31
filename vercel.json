@@ -1,8 +1,7 @@
 {
-	"rewrites": [
-		{
-			"source": "/",
-			"destination": "/index.html"
+	"functions": {
+		"index.js": {
+			"includeFiles": "public/index.html"
 		}
-	]
+	}
 }
