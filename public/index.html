@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Список дел</title>
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="/app.js" defer></script>
+	</head>
+	<body>
+		<main>
+			<h1>Список дел</h1>
+			<p class="subtitle">Express + MongoDB</p>
+
+			<label for="token">API-токен</label>
+			<input
+				id="token"
+				type="password"
+				placeholder="Введите токен"
+				autocomplete="off"
+			/>
+
+			<label for="runId">Группа задач (runId)</label>
+			<input id="runId" type="text" value="manual" />
+
+			<button id="load" type="button">Загрузить задачи</button>
+
+			<hr />
+
+			<h2>Добавить задачу</h2>
+
+			<label for="newTitle">Название</label>
+			<input
+				id="newTitle"
+				type="text"
+				maxlength="200"
+				placeholder="Что нужно сделать?"
+			/>
+
+			<button id="add" type="button">Добавить</button>
+
+			<hr />
+
+			<h2>Мои задачи</h2>
+			<p id="status" role="status"></p>
+			<ul id="taskList"></ul>
+		</main>
+	</body>
+</html>
