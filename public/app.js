@@ -3,6 +3,7 @@ const runIdInput = document.getElementById('runId')
 const loadButton = document.getElementById('load')
 const taskList = document.getElementById('taskList')
 const status = document.getElementById('status')
+const authorInfo = document.getElementById('authorInfo')
 
 loadButton.addEventListener('click', async () => {
 	const token = tokenInput.value.trim()
@@ -31,6 +32,18 @@ loadButton.addEventListener('click', async () => {
 		if (!response.ok) {
 			status.textContent = data.error || 'Ошибка запроса'
 			return
+		}
+
+		const authorResponse = await fetch('/api/author/', {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
+
+		if (authorResponse.ok) {
+			const author = await authorResponse.json()
+
+			authorInfo.textContent = `Автор: ${author.fullName} (${author.login})`
 		}
 
 		for (const task of data) {
